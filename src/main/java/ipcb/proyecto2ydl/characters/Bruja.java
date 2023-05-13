@@ -8,7 +8,7 @@ package ipcb.proyecto2ydl.characters;
 public class Bruja extends Enemigo{
     public Bruja() {
         tipoPersonaje = "";
-        pathImage = "/images/arquero.png";
+        pathImage = "/images/bruja.png";
         maxVida = 150;
         vida = maxVida;
         dano = 100;
