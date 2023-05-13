@@ -54,6 +54,9 @@ public abstract class Personaje implements Serializable{
     public void setPrimeraCoordenada(Coordenada coordenada){
         this.coordenada = coordenada;
     }
+    public Coordenada getCurrentCoordenada(){
+        return this.coordenada;
+    }
     public void enableMovimientosValidos(Tablero tablero){
         Casilla casillaPersonaje = tablero.getCasilla(coordenada);
         casillaPersonaje.setEnabled(true);
@@ -63,9 +66,11 @@ public abstract class Personaje implements Serializable{
                 Coordenada enableBtnCoor = inicial.getRectCoorFromThis(i); //wasd
                 if(enableBtnCoor.valida(tablero)){
                     Casilla casilla = tablero.getCasilla(enableBtnCoor);
-                    casilla.inicializar(true);
-                    casilla.setEnabled(true);
-                    inicial = enableBtnCoor;
+                    if(!casilla.containsCharacter()){
+                        casilla.inicializar(true);
+                        casilla.setEnabled(true);
+                        inicial = enableBtnCoor;
+                    }
                 }else{
                     break;
                 }

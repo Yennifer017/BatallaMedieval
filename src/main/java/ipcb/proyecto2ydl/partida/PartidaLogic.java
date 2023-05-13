@@ -85,22 +85,26 @@ public class PartidaLogic {
             casilla.ingresarPersonaje(personajes[0]);
             SeleccionExitosa=true;
             admiEnemigos.initEnemigos(tablero);
+            
+            JOptionPane.showMessageDialog(null, "Ahora vas a poder mover al personaje");
+            
             tablero.disable();
             personajes[0].enableMovimientosValidos(tablero);
             turnoPlayer=true;
+
         }
     }
     private void playMode(Coordenada coordenada){
         if(moverse && turnoPlayer){
             personajes[contador].moverse(coordenada, tablero);
             turnoPlayer=false;
+            admiEnemigos.moverEnemigos(tablero);
+            /*try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+            }*/
             tablero.disable();
             personajes[contador].enableMovimientosValidos(tablero);
-            /*try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(PartidaLogic.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
             turnoPlayer=true;
         }else{
             

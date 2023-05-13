@@ -8,7 +8,7 @@ package ipcb.proyecto2ydl.characters;
 public class Cancerbero extends Enemigo{
     public Cancerbero() {
         tipoPersonaje = "Cancerbero";
-        pathImage = "/images/cancerbero.png";
+        pathImage = "/images/cerbero.png";
         maxVida = 400;
         vida = maxVida;
         dano = 45;

@@ -64,12 +64,44 @@ public class AdmiEnemigos extends Thread{
             int posX = random.nextInt(tablero.getLengthX());
             int posY = random.nextInt(tablero.getLengthY());
             Coordenada coordenada = new Coordenada(posX, posY);
-            if(tablero.getCasilla(coordenada) instanceof Planicie){
+            if(tablero.getCasilla(coordenada) instanceof Planicie && 
+                    !tablero.getCasilla(coordenada).containsCharacter()){
                 Casilla casilla = tablero.getCasilla(coordenada);
                 enemigos[enemigosExistosos].setPrimeraCoordenada(coordenada);
                 casilla.ingresarPersonaje(enemigos[enemigosExistosos]);
+                casilla.repaint();
                 enemigosExistosos++;
             }
+        }
+    }
+    public void moverEnemigos(Tablero tablero){
+        
+        for (int i = 0; i < enemigos.length; i++) {
+            boolean movimientoValido;
+            int contador=0;
+            do {    
+                movimientoValido=true;
+                char dir = enemigos[i].getDirRandom();
+                int movs = enemigos[i].getNoMovsRandom();
+                
+                if(movs>0){
+                    Coordenada coordenadaInicial = enemigos[i].getCurrentCoordenada();
+                    Coordenada coordenadaDestino = null;
+                    for (int j = 0; j < movs; j++) {
+                        coordenadaDestino = coordenadaInicial.getRectCoorFromThis(dir);
+                        coordenadaInicial = coordenadaDestino;
+                    }
+                    if (coordenadaDestino.valida(tablero)) {
+                        enemigos[i].moverse(coordenadaDestino, tablero);
+                    } else {
+                        contador++;
+                        movimientoValido = false;
+                    }
+                }else{
+                    movimientoValido=true;
+                }
+ 
+            } while (!movimientoValido && contador<100);  
         }
     }
     

@@ -19,16 +19,21 @@ public class Enemigo extends Personaje{
         int eleccion = random.nextInt(4);
         char direccion;
         switch (eleccion) {
-            case 1 -> direccion = 'w';
-            case 2 -> direccion = 'a';
-            case 3 -> direccion = 's';
-            case 4 -> direccion = 'd';
+            case 0 -> direccion = 'w';
+            case 1 -> direccion = 'a';
+            case 2 -> direccion = 's';
+            case 3 -> direccion = 'd';
             default -> throw new AssertionError();
         }
         return direccion;
     }
     public int getNoMovsRandom(){
-        int movs = (random.nextInt(maxMov))+1;
+        int movs;
+        if(maxMov>0){
+            movs = (random.nextInt(maxMov))+1;
+        }else{
+            movs = 0;
+        }
         return movs;
     }
    
