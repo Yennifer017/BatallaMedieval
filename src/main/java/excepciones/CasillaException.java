@@ -18,4 +18,8 @@ public class CasillaException extends Exception{
     public String toString(){
         return excepcion;
     }
+    public int getint(){
+        return 0;
+
+    }
 }
