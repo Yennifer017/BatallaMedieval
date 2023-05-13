@@ -1,0 +1,19 @@
+
+package ipcb.proyecto2ydl.characters;
+
+/**
+ *
+ * @author yenni
+ */
+public class Bruja extends Enemigo{
+    public Bruja() {
+        tipoPersonaje = "";
+        pathImage = "/images/arquero.png";
+        maxVida = 150;
+        vida = maxVida;
+        dano = 100;
+        maxMov = 10;
+        maxAlcanceAtaque = 0;
+        vuela=true;
+    }
+}
